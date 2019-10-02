@@ -1,7 +1,9 @@
 package com.app.socialbooks.aplicacao;
 
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpEntity;
@@ -41,11 +43,16 @@ public class Aplicacao {
 		RestTemplate restTemplate = new RestTemplate();
 		
 		// Send request with GET method, and Headers.
-        ResponseEntity<String> response = restTemplate.exchange(URL_AUTORES, //
-                HttpMethod.GET, entity, String.class);
+        ResponseEntity<Autor[]> response = restTemplate.exchange(URL_AUTORES, //
+                HttpMethod.GET, entity, Autor[].class);
+        
+        //Verifica se resposta tem corpo
+        if(response.hasBody()) {
+        	//Verifica se há itens na lista para interação
+        	if(response.getBody().length > 0)
+        		for(Autor item : response.getBody())
+        			System.out.println(item.getNome());//escreve nome de cada autor no console
+        }
  
-        String result = response.getBody();
- 
-        System.out.println(result);
 	}
 }

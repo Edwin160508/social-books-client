@@ -1,6 +1,7 @@
 package com.app.socialbooks.aplicacao;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -12,7 +13,7 @@ public class Autor {
 	private String nome;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate dataNascimento;
+	private Date dataNascimento;
 	
 	private String nacionalidade;
 	
@@ -34,11 +35,11 @@ public class Autor {
 		this.nome = nome;
 	}
 
-	public LocalDate getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
