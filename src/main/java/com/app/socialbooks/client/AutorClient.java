@@ -1,5 +1,6 @@
 package com.app.socialbooks.client;
 
+import java.net.URI;
 import java.util.Arrays;
 import java.util.List;
 
@@ -38,5 +39,16 @@ public class AutorClient {
                 HttpMethod.GET, entity, Autor[].class);
 		
 		return Arrays.asList(response.getBody());
+	}
+	
+	public String salvar(Autor autor) {
+		RestTemplate restTemplate = new RestTemplate();
+		HttpEntity request = new HttpEntity(Login.jsonComunication());
+		//autor = restTemplate.postForObject(URL_AUTORES, request, Autor.class);
+		
+		//ResponseEntity response =  (ResponseEntity) restTemplate.httpEntityCallback(autor);
+		ResponseEntity response = restTemplate.exchange(URL_AUTORES, HttpMethod.POST, request, Autor.class); 
+		return response.getHeaders().getLocation().toString();
+
 	}
 }
