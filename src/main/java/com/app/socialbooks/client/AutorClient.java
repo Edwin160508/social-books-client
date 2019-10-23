@@ -1,9 +1,12 @@
 package com.app.socialbooks.client;
 
-import java.net.URI;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -42,15 +45,16 @@ public class AutorClient {
 		return Arrays.asList(response.getBody());
 	}
 	
-	public String salvar(Autor autor) {
+	public String salvar(Autor autor) throws JSONException, ParseException {
 		RestTemplate restTemplate = new RestTemplate();		
-		JSONObject parseJsonObject = new JSONObject();
+		/*JSONObject parseJsonObject = new JSONObject();
 		parseJsonObject.put("nome", autor.getNome());
-		parseJsonObject.put("dataNascimento", autor.getDataNascimento());
+		parseJsonObject.put("dataNascimento", "16/05/1988");
 		parseJsonObject.put("nacionalidade", autor.getNacionalidade());				
-		HttpEntity request = new HttpEntity(parseJsonObject,Login.jsonComunication());
-		ResponseEntity response = restTemplate.exchange(URL_AUTORES, HttpMethod.POST, request, Autor.class); 
-		return response.getHeaders().getLocation().toString();
+		HttpEntity request = new HttpEntity(parseJsonObject,Login.jsonComunication());*/
+		Autor result = restTemplate.postForObject(URL_AUTORES, autor, Autor.class);
+		//ResponseEntity response = restTemplate.exchange(URL_AUTORES, HttpMethod.POST, request, Autor.class); 
+		return result.getNome();
 
 	}
 }

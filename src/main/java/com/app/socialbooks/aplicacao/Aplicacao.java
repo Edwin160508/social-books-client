@@ -26,9 +26,9 @@ public class Aplicacao {
         
         /*Salvar Autor*/
         Autor autor= new Autor();
-        autor.setNome("Edwin Oliveira");
+        autor.setNome("Edwin Oliveira2");
         SimpleDateFormat dataNascimento = new SimpleDateFormat("dd/MM/yyyy");
-        autor.setDataNascimento(dataNascimento.parse("16/05/1988"));        
+        autor.setDataNascimento("16/05/1989");        
         autor.setNacionalidade("Brasileira");
         List<Livro> listaLivros = new ArrayList();
         autor.setListaLivros(listaLivros);

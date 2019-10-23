@@ -12,7 +12,7 @@ public class Autor {
 	private String nome;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private Date dataNascimento;
+	private String dataNascimento;
 	
 	private String nacionalidade;
 	
@@ -34,11 +34,11 @@ public class Autor {
 		this.nome = nome;
 	}
 
-	public Date getDataNascimento() {
+	public String getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
